@@ -1,0 +1,42 @@
+a5_homework describes:
+
+describe a5_locations;
++---------------+-----------------------+------+-----+---------+----------------+
+| Field         | Type                  | Null | Key | Default | Extra          |
++---------------+-----------------------+------+-----+---------+----------------+
+| locationID    | int(11) unsigned      | NO   | PRI | NULL    | auto_increment |
+| state         | char(2)               | NO   |     | NULL    |                |
+| location_name | varchar(32)           | NO   |     | NULL    |                |
+| zipcode       | mediumint(9) unsigned | NO   |     | NULL    |                |
+| latitude      | float(7,4)            | NO   |     | NULL    |                |
+| longitude     | float(7,4)            | NO   |     | NULL    |                |
++---------------+-----------------------+------+-----+---------+----------------+
+
+
+describe a5_people;
++-----------------+------------------+------+-----+---------+----------------+
+| Field           | Type             | Null | Key | Default | Extra          |
++-----------------+------------------+------+-----+---------+----------------+
+| personID        | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| person_name     | varchar(32)      | NO   |     | NULL    |                |
+| provider_number | varchar(12)      | NO   |     | NULL    |                |
+| locationID      | int(10) unsigned | NO   |     | NULL    |                |
++-----------------+------------------+------+-----+---------+----------------+
+
+
+describe a5_subject;
++---------------+------------------+------+-----+---------+----------------+
+| Field         | Type             | Null | Key | Default | Extra          |
++---------------+------------------+------+-----+---------+----------------+
+| subjectID     | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| subject_label | varchar(16)      | NO   |     | NULL    |                |
++---------------+------------------+------+-----+---------+----------------+
+
+
+describe a5_people_subject;
++-----------+------------------+------+-----+---------+-------+
+| Field     | Type             | Null | Key | Default | Extra |
++-----------+------------------+------+-----+---------+-------+
+| personID  | int(10) unsigned | NO   | MUL | NULL    |       |
+| subjectID | int(10) unsigned | NO   |     | NULL    |       |
++-----------+------------------+------+-----+---------+-------+

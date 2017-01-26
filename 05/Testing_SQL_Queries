@@ -1,0 +1,35 @@
+
+SELECT 	distance,
+	state,
+	location_name, 
+	zipcode, 
+	person_name, 
+	provider_number,
+        subject_label
+		
+    FROM 
+    (
+        (SELECT person_name, subject_label FROM a5_people AS p JOIN a5_people_subject AS ps 
+            ON p.personID=ps.personID JOIN a5_subject AS sub ON ps.subjectID=sub.subjectID;),
+        (SELECT '$distance_sql' AS distance FROM a5_locations;)	
+ 
+ 
+    )
+WHERE '$distance_sql'<=25
+
+
+
+$latitude1 = "(SELECT latitude FROM a5_locations WHERE zipcode='$zip')";
+$longitude1 = "(SELECT longitude FROM a5_locations WHERE zipcode='$zip')";
+$latitude2 = "(SELECT latitude FROM a5_locations)";
+$longitude2 = "(SELECT longitude FROM a5_locations)";
+
+$distance_sql="(69.0*SQRT(POWER(('$latitude1'-'$latitude2'),2)+POWER(('$longitude1'-'$longitude2'),2)))";
+
+
+
+****use the distance formula twice, once in the SELECT clause to attache the result to something and then you can display
+
+use two queries one to find the area and just the location of the zip that was entered.
+
+use another query to find the main check of data that is displayed at the bottom.
